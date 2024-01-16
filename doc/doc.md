@@ -63,16 +63,16 @@
 
 ##### Classes diagrams
 
-##### Sequence diagrams
+[<img src="resources/class-diagram.drawio.svg">](resources/class-diagram.drawio.svg)
 
-#### API structure
+### Database
+
+### API structure
 
 * Paradigm (RestFull, Websocket, etc...)
 * Endpoints
 * Authentication
 * Authorization
-
-### Database
 
 ### User interface
 
