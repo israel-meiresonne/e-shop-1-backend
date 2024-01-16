@@ -43,10 +43,27 @@
 
 #### UML diagrams
 
-* Use case diagrams
-* Classes diagrams
-* Activity diagrams
-* Sequence diagrams
+##### Use case diagrams
+
+[<img src="resources/use-case.drawio.svg">](resources/use-case.drawio.svg)
+
+##### Activity diagrams
+
+* Feature F1:
+[<img src="resources/activity-f1.drawio.svg">](resources/activity-f1.drawio.svg)
+
+* Feature F2:
+[<img src="resources/activity-f2.drawio.svg">](resources/activity-f2.drawio.svg)
+* Feature F3-Add:
+[<img src="resources/activity-f3-add.drawio.svg">](resources/activity-f3-add.drawio.svg)
+* Feature F3-Remove:
+[<img src="resources/activity-f3-remove.drawio.svg">](resources/activity-f3-remove.drawio.svg)
+* Feature F5:
+[<img src="resources/activity-f5.drawio.svg">](resources/activity-f5.drawio.svg)
+
+##### Classes diagrams
+
+##### Sequence diagrams
 
 #### API structure
 
