@@ -39,6 +39,8 @@
 
 #### Network components
 
+[<img src="resources/network-components.drawio.svg">](resources/network-components.drawio.svg)
+
 #### UML diagrams
 
 * Use case diagrams
