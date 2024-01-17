@@ -67,6 +67,8 @@
 
 ### Database
 
+[<img src="resources/erd-database.drawio.svg">](resources/erd-database.drawio.svg)
+
 ### API structure
 
 * Paradigm (RestFull, Websocket, etc...)
