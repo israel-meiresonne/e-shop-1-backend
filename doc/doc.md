@@ -51,7 +51,6 @@
 
 * Feature F1:
 [<img src="resources/activity-f1.drawio.svg">](resources/activity-f1.drawio.svg)
-
 * Feature F2:
 [<img src="resources/activity-f2.drawio.svg">](resources/activity-f2.drawio.svg)
 * Feature F3-Add:
@@ -85,32 +84,78 @@
 
 #### API: Reference
 
-##### Reference
+##### `basket`
 
-##### Reference: `sort`
+* `basket`:
+  * Description: Basket where users put their [`product`](#product)
+  * type: `list` of [`product`](#product)
 
-* `sort`:
-  * Description: To order the response
-  * type: `enum`
-  * value: `asc`|`desc`
-  * required: `False`
+##### `card`
 
-##### Reference: `criteria`
+* `card`:
+  * Description: Payment card details
+  * type: `object`
+  * Properties:
+    * `firstname`:
+      * Description: Card's firstname
+      * type: `string`
+      * required: `True`
+    * `lastname`:
+      * Description: Card's lastname
+      * type: `string`
+      * required: `True`
+    * `number`:
+      * Description: Card's number
+      * type: `int`
+      * required: `True`
+
+##### `criteria`
 
 * `criteria`:
-  * Description: Value on which to base the sorting [`sort`](#reference-sort)
+  * Description: Value on which to base the sorting [`sort`](#sort)
   * type: `enum`
   * value: **See the usage**
-  * required: `True` Only if [`sort`](#reference-sort) is provided else `False`
+  * required: `True` Only if [`sort`](#sort) is provided else `False`
 
-##### Reference: `limit`
+##### `limit`
 
 * `limit`:
   * Description: The maximum number of requested resources returned
   * type: `int`
   * required: **See the usage**
 
-##### Reference: `page`
+##### `picture`
+
+* `picture`:
+  * Description: Link (URL or path) to access picture
+  * type: `string`
+
+##### `product`
+
+* `product`:
+  * Description: A product
+  * type: `object`
+  * properties:
+    * `id`:
+      * Description: Product's identifier
+      * type: `string`
+    * `name`:
+      * Description: Product's name
+      * type: `string`
+    * `pictures`:
+      * Description: List of product [`picture`](#picture)
+      * type: `list`
+    * `quantity`:
+      * Description: Quantity of [`product`](#product)
+      * type: `int`
+
+##### `products`
+
+* `products`:
+  * Description: List of [`product`](#product)
+  * type: `list`
+
+##### `page`
 
 * `page`:
   * Description: Indicate the position of the page to get in pagination
@@ -121,70 +166,145 @@
   * type: `int`
   * required: `False`
 
-##### Reference: `products`
+##### `sort`
 
-* `products`: List of [`product`](#reference-product)
-  * type: `list`
-
-##### Reference: `product`
-
-* `product`: a product
-  * type: `object`
-  * properties:
-    * `id`:
-      * Description: Product's identifier
-      * type: `string`
-    * `name`:
-      * Description: Product's name
-      * type: `string`
-    * `pictures`: List of product [`picture`](#reference-picture)
-      * type: `list`
-
-##### Reference: `picture`
-
-* `picture`: Link (URL or path) to access picture
-  * type: `string`
+* `sort`:
+  * Description: To order the response
+  * type: `enum`
+  * value: `asc`|`desc`
+  * required: `False`
 
 #### API: Endpoints
 
-##### Get Products
+##### Get Multiple Products
 
 * **Description**: To request list of product
 * **Request**:
   * Path: `/api/products`
   * Method: `GET`
   * Parameter:
-    * [`sort`](#reference-sort):
-    * [`criteria`](#reference-criteria):
+    * [`sort`](#sort):
+    * [`criteria`](#criteria):
       * value: `price`|`name`
-    * [`limit`](#reference-limit):
+    * [`limit`](#limit):
       * Constraint:
         * If not provided, a default is used
       * required: `False`
-    * [`page`](#reference-page):
+    * [`page`](#page):
+  * Example:
 
-  ```HTTP
-  GET /api/products?sort=desc&criteria=price&limit=15&page=3
-  ```
+    ```HTTP
+    GET /api/products?sort=desc&criteria=price&limit=15&page=3
+    ```
 
 * **Response**:
-  * [`products`](#reference-products)
-  * `pagination`:
-    * Description: List of link to get other page of product
-    * Constraint:
-      * Page are grouped following the [`limit`](#reference-limit) parameter and the number of product available
-    * type: `list` of `string`
+  * Body:
+    * [`products`](#products)
+    * `pagination`:
+      * Description: List of link to get other page of product
+      * Constraint:
+        * Page are grouped following the [`limit`](#limit) parameter and the number of product available
+      * type: `list` of `string`
+  * Example:
 
-  ```json
-  {
-    "products": [
+    ```json
+    {
+      "products": [
+        {
+          "id": "abcd123",
+          "name": "amazing product a",
+          "pictures": [
+            "/api/picture/1",
+            "/api/picture/2"
+          ]
+        },
+        {
+          "id": "efgh456",
+          "name": "amazing product b",
+          "pictures": [
+            "/api/picture/3",
+            "/api/picture/4"
+          ]
+        }
+      ],
+      "pagination": [
+        // The current page is 3 so there's no link for it
+        "/api/products?sort=desc&criteria=price&limit=15&page=0",
+        "/api/products?sort=desc&criteria=price&limit=15&page=1",
+        "/api/products?sort=desc&criteria=price&limit=15&page=2",
+        "/api/products?sort=desc&criteria=price&limit=15&page=4",
+        "/api/products?sort=desc&criteria=price&limit=15&page=5"
+      ]
+    }
+    ```
+
+##### Get One Product
+
+* **Description**: To request one product
+* **Request**:
+  * Path: `/api/product/{product_id}`
+    * `{product_id}`: The identifier of a product
+  * Method: `GET`
+  * Parameter: **None**
+  * Example:
+
+    ```HTTP
+    GET /api/product/abcd123
+    ```
+
+* **Response**:
+  * Body:
+    * [`products`](#products)
+  * Example:
+
+    ```json
+    {
+      "id": "abcd123",
+      "name": "amazing product a",
+      "pictures": [
+        "/api/picture/1",
+        "/api/picture/2"
+      ]
+    }
+    ```
+
+##### Get Basket
+
+* **Description**: To a user's basket
+* **Request**:
+  * Path: `/api/basket`
+  * Method: `GET`
+  * Parameter: **None**
+  * Example:
+
+    ```HTTP
+    GET /api/basket
+    ```
+
+* **Response**:
+  * Body:
+    * [`basket`](#basket)
+  * Example:
+
+    ```json
+    [
+      {
+        "id": "ijkl789",
+        "name": "amazing product c",
+        "pictures": [
+          "/api/picture/5",
+          "/api/picture/6"
+        ],
+        "quantity": 3
+      },
       {
         "id": "abcd123",
         "name": "amazing product a",
         "pictures": [
           "/api/picture/1",
           "/api/picture/2"
-        ]
+        ],
+        "quantity": 2
       },
       {
         "id": "efgh456",
@@ -192,19 +312,133 @@
         "pictures": [
           "/api/picture/3",
           "/api/picture/4"
-        ]
+        ],
+        "quantity": 1
       }
-    ],
-    "pagination": [
-      // The current page is 3 so there's no link for it
-      "/api/products?sort=desc&criteria=price&limit=15&page=0",
-      "/api/products?sort=desc&criteria=price&limit=15&page=1",
-      "/api/products?sort=desc&criteria=price&limit=15&page=2",
-      "/api/products?sort=desc&criteria=price&limit=15&page=4",
-      "/api/products?sort=desc&criteria=price&limit=15&page=5"
     ]
-  }
-  ```
+    ```
+
+##### Add Products To The Basket
+
+* **Description**: To add products in the basket
+* **Request**:
+  * Path: `/api/basket`
+  * Method: `POST`
+  * Body:
+    * `id`:
+      * Description: A [`product`](#product)'s identifier
+      * required: `True`
+    * `quantity`:
+      * Description: Number of [`product`](#product) to add
+      * required: `True`
+
+  * Example:
+
+    ```HTTP
+    POST /api/basket
+    ```
+
+    ```json
+    [
+      {
+        "id": "ijkl789",
+        "quantity": 2
+      },
+      {
+        "id": "efgh456",
+        "quantity": 1
+      },
+      {
+        "id": "abcd123",
+        "quantity": 3
+      }
+    ]
+    ```
+
+* **Response**:
+  * Body: **None**
+  * Example:
+
+    ```json
+    // Empty body
+    ```
+
+##### Remove Products From The Basket
+
+* **Description**: To remove products from the basket
+* **Request**:
+  * Path: `/api/basket`
+  * Method: `DELETE`
+  * Body:
+    * `id`:
+      * Description: A [`product`](#product)'s identifier
+      * required: `True`
+    * `quantity`:
+      * Description: Number of [`product`](#product) to keep in the basket
+      * required: `True`
+
+  * Example:
+
+    ```HTTP
+    DELETE /api/basket
+    ```
+
+    ```json
+    [
+      {
+        "id": "ijkl789",
+        "quantity": 2
+      },
+      {
+        "id": "efgh456",
+        "quantity": 1
+      },
+      {
+        "id": "abcd123",
+        "quantity": 3
+      }
+    ]
+    ```
+
+* **Response**:
+  * Body: **None**
+  * Example:
+
+    ```json
+    // Empty body
+    ```
+
+##### Checkout The Basket
+
+* **Description**: To checkout the basket
+* **Request**:
+  * Path: `/api/checkout`
+  * Method: `POST`
+  * Parameter:
+    * [`card`](#card):
+  * Example:
+
+    ```HTTP
+    POST /api/checkout
+    ```
+
+    ```json
+    {
+      "card": {
+        "firstname": "john",
+        "lastname": "doe",
+        "number": "0123456789101112"
+      }
+    }
+    ```
+
+* **Response**:
+  * Body: **None**
+  * Example:
+
+    ```json
+    // Empty body
+    ```
 
 #### API: Design API error handling
 
