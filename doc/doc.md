@@ -70,17 +70,14 @@
 
 ### API structure
 
-* Paradigm (RestFull, Websocket, etc...)
-* Endpoints
-* Authentication
-* Authorization
-
 #### API: Overall info
 
 * Paradigm: **REST API**
 * Data structures and types: `json`
-* authentication: **None**
-* authorization: **None**
+* Authentication:
+  * Token: users are authenticated with a unique token
+* Authorization:
+  * Each user has access to his own data only
 
 #### API: Reference
 
@@ -440,17 +437,50 @@
     // Empty body
     ```
 
-#### API: Design API error handling
+#### API: Error Handling
 
-### User interface
+##### Error: Structure
 
-#### Pages
+* Follow [RFC7807](https://datatracker.ietf.org/doc/html/rfc7807) rules
+* Parameters (`RFC7807`):
+  * `type`: A URI reference that identifies the problem type.
+  * `title`: A short, human-readable summary of the problem type.
+  * `status`: The HTTP status code
+  * `detail`: A human-readable explanation specific to this occurrence of the problem.
+  * `instance`: A URI reference that identifies the specific occurrence of the problem.
+    * In other words, the URI used to perform the request
+* Parameters (mine):
+  * `code`: The code system of the error.
+  * `error`: Where API can place all the information related to the error.
+* Example:
 
-1. Home/landing page
-2. Grid page
-3. Product page
-4. Basket page
+  ```JSON
+  {
+      "type": "https://example.com/doc/unknown-product",
+      "title": "Product not found",
+      "status": 400,
+      "detail": "Product with id '123abc' do not exist",
+      "instance": "/api/product/123abc",
+      "code": 2300,
+      "error": {}
+    }
+  ```
 
-#### Mock-up
+##### Error: Category
 
-UI Mock-up
+| Category            | HTTP Range | System Range | Description                                        |
+| ------------------- | ---------- | ------------ | -------------------------------------------------- |
+| System error        | 500        | 1000         | Error from the server side                         |
+| Unavailable service | 500        | 1100         | Can't perform request due to a unavailable service |
+| Unknown service     | 500        | 1200         | An undocumented error                              |
+| Client error        | 400        | 2000         | Error from the server side                         |
+| Unauthorized access | 400        | 2100         | Unauthorized access to access resource             |
+| Malformed request   | 400        | 2200         | Request don't respect data structure and/or type   |
+| Invalid request     | 400        | 2300         | Request's content is not valid                     |
+| Conflict state      | 400        | 2400         | The current state don't allow the operation        |
+
+##### Error: Documentation
+
+| System Error Code | HTTP Status Code | Machine-Readable | Human-Readable |
+| ----------------- | ---------------- | ---------------- | -------------- |
+|                   |                  |                  |                |
