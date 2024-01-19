@@ -85,7 +85,13 @@
 
 * `basket`:
   * Description: Basket where users put their [`product`](#product)
-  * type: `list` of [`product`](#product)
+  * type: `object`
+  * properties:
+  * [`products`](#products)
+  * `subtotal`:
+    * Description: The total price of the basket
+    * type: `float`
+    * required: `True`
 
 ##### `card`
 
@@ -112,14 +118,12 @@
   * Description: Value on which to base the sorting [`sort`](#sort)
   * type: `enum`
   * value: **See the usage**
-  * required: `True` Only if [`sort`](#sort) is provided else `False`
 
 ##### `limit`
 
 * `limit`:
   * Description: The maximum number of requested resources returned
   * type: `int`
-  * required: **See the usage**
 
 ##### `picture`
 
@@ -143,8 +147,13 @@
       * Description: List of product [`picture`](#picture)
       * type: `list`
     * `quantity`:
-      * Description: Quantity of [`product`](#product)
+      * Description: Quantity of the product
       * type: `int`
+      * required: `False`
+    * `price`:
+      * Description: Quantity of the product
+      * type: `float`
+      * required: `True`
 
 ##### `products`
 
@@ -161,7 +170,6 @@
     * If not given then the default page position if `0`
     * If the page position is outside the number of page available then the last page is returned
   * type: `int`
-  * required: `False`
 
 ##### `sort`
 
@@ -169,7 +177,6 @@
   * Description: To order the response
   * type: `enum`
   * value: `asc`|`desc`
-  * required: `False`
 
 #### API: Endpoints
 
@@ -181,13 +188,16 @@
   * Method: `GET`
   * Parameter:
     * [`sort`](#sort):
+      * required: `False`
     * [`criteria`](#criteria):
       * value: `price`|`name`
+      * required: `True` only if [`sort`](#sort) is provided else `False`
     * [`limit`](#limit):
       * Constraint:
         * If not provided, a default is used
       * required: `False`
     * [`page`](#page):
+      * required: `False`
   * Example:
 
     ```HTTP
@@ -267,7 +277,7 @@
 
 ##### Get Basket
 
-* **Description**: To a user's basket
+* **Description**: To get an user's basket
 * **Request**:
   * Path: `/api/basket`
   * Method: `GET`
