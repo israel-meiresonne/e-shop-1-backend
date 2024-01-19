@@ -249,8 +249,8 @@
 
 * **Description**: To request one product
 * **Request**:
-  * Path: `/api/product/{product_id}`
-    * `{product_id}`: The identifier of a product
+  * Path: `/api/product/:product_id`
+    * `:product_id`: The identifier of a product
   * Method: `GET`
   * Parameter: **None**
   * Example:
