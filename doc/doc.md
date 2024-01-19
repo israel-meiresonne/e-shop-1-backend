@@ -370,24 +370,26 @@
     // Empty body
     ```
 
-##### Remove Products From The Basket
+##### Change Products In The Basket
 
-* **Description**: To remove products from the basket
+* **Description**: To update the products in the basket
 * **Request**:
   * Path: `/api/basket`
-  * Method: `DELETE`
+  * Method: `PUT`
   * Body:
     * `id`:
       * Description: A [`product`](#product)'s identifier
       * required: `True`
     * `quantity`:
-      * Description: Number of [`product`](#product) to keep in the basket
+      * Description: Quantity of a [`product`](#product) to keep in the basket
+      * Constraint:
+        * The new quantity can't be `0`
       * required: `True`
 
   * Example:
 
     ```HTTP
-    DELETE /api/basket
+    PUT /api/basket
     ```
 
     ```json
@@ -404,6 +406,37 @@
         "id": "abcd123",
         "quantity": 3
       }
+    ]
+    ```
+
+* **Response**:
+  * Body: **None**
+  * Example:
+
+    ```json
+    // Empty body
+    ```
+
+##### Remove Products From The Basket
+
+* **Description**: To remove products from the basket
+* **Request**:
+  * Path: `/api/basket`
+  * Method: `DELETE`
+  * Body:
+    * Description: List of [`product`](#product)'s identifier
+    * type: `list`
+  * Example:
+
+    ```HTTP
+    DELETE /api/basket
+    ```
+
+    ```json
+    [
+      "ijkl789",
+      "efgh456",
+      "abcd123"
     ]
     ```
 
