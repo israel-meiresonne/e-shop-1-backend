@@ -30,6 +30,7 @@
 | --------------------- | ------------ |
 | Nest.js               | Next.js      |
 | TypeScript            | Tailwind CSS |
+| TypeORM               |              |
 | PostgreSQL            |              |
 | Docker/Docker-Compose |              |
 
