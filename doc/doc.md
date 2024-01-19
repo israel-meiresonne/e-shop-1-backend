@@ -185,7 +185,7 @@
 
 * **Description**: To request list of product
 * **Request**:
-  * Path: `/api/products`
+  * Path: `/api/v1/products`
   * Method: `GET`
   * Parameter:
     * [`sort`](#sort):
@@ -202,7 +202,7 @@
   * Example:
 
     ```HTTP
-    GET /api/products?sort=desc&criteria=price&limit=15&page=3
+    GET /api/v1/products?sort=desc&criteria=price&limit=15&page=3
     ```
 
 * **Response**:
@@ -222,26 +222,26 @@
           "id": "abcd123",
           "name": "amazing product a",
           "pictures": [
-            "/api/picture/1",
-            "/api/picture/2"
+            "/api/v1/picture/1",
+            "/api/v1/picture/2"
           ]
         },
         {
           "id": "efgh456",
           "name": "amazing product b",
           "pictures": [
-            "/api/picture/3",
-            "/api/picture/4"
+            "/api/v1/picture/3",
+            "/api/v1/picture/4"
           ]
         }
       ],
       "pagination": [
         // The current page is 3 so there's no link for it
-        "/api/products?sort=desc&criteria=price&limit=15&page=0",
-        "/api/products?sort=desc&criteria=price&limit=15&page=1",
-        "/api/products?sort=desc&criteria=price&limit=15&page=2",
-        "/api/products?sort=desc&criteria=price&limit=15&page=4",
-        "/api/products?sort=desc&criteria=price&limit=15&page=5"
+        "/api/v1/products?sort=desc&criteria=price&limit=15&page=0",
+        "/api/v1/products?sort=desc&criteria=price&limit=15&page=1",
+        "/api/v1/products?sort=desc&criteria=price&limit=15&page=2",
+        "/api/v1/products?sort=desc&criteria=price&limit=15&page=4",
+        "/api/v1/products?sort=desc&criteria=price&limit=15&page=5"
       ]
     }
     ```
@@ -250,14 +250,14 @@
 
 * **Description**: To request one product
 * **Request**:
-  * Path: `/api/product/:product_id`
+  * Path: `/api/v1/product/:product_id`
     * `:product_id`: The identifier of a product
   * Method: `GET`
   * Parameter: **None**
   * Example:
 
     ```HTTP
-    GET /api/product/abcd123
+    GET /api/v1/product/abcd123
     ```
 
 * **Response**:
@@ -270,8 +270,8 @@
       "id": "abcd123",
       "name": "amazing product a",
       "pictures": [
-        "/api/picture/1",
-        "/api/picture/2"
+        "/api/v1/picture/1",
+        "/api/v1/picture/2"
       ]
     }
     ```
@@ -280,13 +280,13 @@
 
 * **Description**: To get an user's basket
 * **Request**:
-  * Path: `/api/basket`
+  * Path: `/api/v1/basket`
   * Method: `GET`
   * Parameter: **None**
   * Example:
 
     ```HTTP
-    GET /api/basket
+    GET /api/v1/basket
     ```
 
 * **Response**:
@@ -300,8 +300,8 @@
         "id": "ijkl789",
         "name": "amazing product c",
         "pictures": [
-          "/api/picture/5",
-          "/api/picture/6"
+          "/api/v1/picture/5",
+          "/api/v1/picture/6"
         ],
         "quantity": 3
       },
@@ -309,8 +309,8 @@
         "id": "abcd123",
         "name": "amazing product a",
         "pictures": [
-          "/api/picture/1",
-          "/api/picture/2"
+          "/api/v1/picture/1",
+          "/api/v1/picture/2"
         ],
         "quantity": 2
       },
@@ -318,8 +318,8 @@
         "id": "efgh456",
         "name": "amazing product b",
         "pictures": [
-          "/api/picture/3",
-          "/api/picture/4"
+          "/api/v1/picture/3",
+          "/api/v1/picture/4"
         ],
         "quantity": 1
       }
@@ -330,7 +330,7 @@
 
 * **Description**: To add products in the basket
 * **Request**:
-  * Path: `/api/basket`
+  * Path: `/api/v1/basket`
   * Method: `POST`
   * Body:
     * `id`:
@@ -343,7 +343,7 @@
   * Example:
 
     ```HTTP
-    POST /api/basket
+    POST /api/v1/basket
     ```
 
     ```json
@@ -375,7 +375,7 @@
 
 * **Description**: To update the products in the basket
 * **Request**:
-  * Path: `/api/basket`
+  * Path: `/api/v1/basket`
   * Method: `PUT`
   * Body:
     * `id`:
@@ -390,7 +390,7 @@
   * Example:
 
     ```HTTP
-    PUT /api/basket
+    PUT /api/v1/basket
     ```
 
     ```json
@@ -422,7 +422,7 @@
 
 * **Description**: To remove products from the basket
 * **Request**:
-  * Path: `/api/basket`
+  * Path: `/api/v1/basket`
   * Method: `DELETE`
   * Body:
     * Description: List of [`product`](#product)'s identifier
@@ -430,7 +430,7 @@
   * Example:
 
     ```HTTP
-    DELETE /api/basket
+    DELETE /api/v1/basket
     ```
 
     ```json
@@ -453,14 +453,14 @@
 
 * **Description**: To checkout the basket
 * **Request**:
-  * Path: `/api/checkout`
+  * Path: `/api/v1/checkout`
   * Method: `POST`
   * Parameter:
     * [`card`](#card):
   * Example:
 
     ```HTTP
-    POST /api/checkout
+    POST /api/v1/checkout
     ```
 
     ```json
@@ -504,7 +504,7 @@
       "title": "Product not found",
       "status": 400,
       "detail": "Product with id '123abc' do not exist",
-      "instance": "/api/product/123abc",
+      "instance": "/api/v1/product/123abc",
       "code": 2300,
       "error": {}
     }
