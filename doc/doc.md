@@ -518,7 +518,7 @@
 | Unavailable service | 500        | 1100         | Can't perform request due to a unavailable service |
 | Unknown service     | 500        | 1200         | An undocumented error                              |
 | Client error        | 400        | 2000         | Error from the server side                         |
-| Unauthorized access | 400        | 2100         | Unauthorized access to access resource             |
+| Unauthorized access | 400        | 2100         | Unauthorized access to resource             |
 | Malformed request   | 400        | 2200         | Request don't respect data structure and/or type   |
 | Invalid request     | 400        | 2300         | Request's content is not valid                     |
 | Conflict state      | 400        | 2400         | The current state don't allow the operation        |
