@@ -179,7 +179,74 @@
   * type: `enum`
   * value: `asc`|`desc`
 
+##### `user`
+
+* `user`:
+  * Description: An user
+  * type: `object`
+  * properties:
+    * `id`:
+      * Description: user's identifier
+      * type: `string`
+      * required: `False`
+    * `email`:
+      * Description: user's email
+      * type: `string`
+    * `password`:
+      * Description: user's password
+      * type: `string`
+
 #### API: Endpoints
+
+##### User Sign Up
+
+* **Description**: Register a new user
+* **Request**:
+  * Path: `/api/v1/user`
+  * Method: `POST`
+  * Parameter:
+    * [`email`](#user):
+      * required: `True`
+    * [`password`](#user):
+      * required: `True`
+  * Example:
+
+    ```HTTP
+    POST /api/v1/user
+    ```
+
+* **Response**:
+  * Body: **None**
+  * Example:
+
+    ```json
+    // Empty body
+    ```
+
+##### User Log in
+
+* **Description**: Log in a new user
+* **Request**:
+  * Path: `/api/v1/user/login`
+  * Method: `POST`
+  * Parameter:
+    * [`email`](#user):
+      * required: `True`
+    * [`password`](#user):
+      * required: `True`
+  * Example:
+
+    ```HTTP
+    POST /api/v1/user/login
+    ```
+
+* **Response**:
+  * Body: **None**
+  * Example:
+
+    ```json
+    // Empty body
+    ```
 
 ##### Get Multiple Products
 
