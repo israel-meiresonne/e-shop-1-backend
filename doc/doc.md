@@ -4,7 +4,7 @@
 
 ### Description
 
-* This web application is a e-shop that use `Next.js` and `Nest.js` in its front end and back end respectively.
+* This web API implement an e-shop with `Nest.js`.
 
 ### Features
 
@@ -26,13 +26,13 @@
 
 ### Technology Stack
 
-| Back-end              | Front-end    |
-| --------------------- | ------------ |
-| Nest.js               | Next.js      |
-| TypeScript            | Tailwind CSS |
-| TypeORM               |              |
-| PostgreSQL            |              |
-| Docker/Docker-Compose |              |
+| Back-end              |
+| --------------------- |
+| Nest.js               |
+| TypeScript            |
+| TypeORM               |
+| PostgreSQL            |
+| Docker/Docker-Compose |
 
 ## Analyze and Design
 
