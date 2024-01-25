@@ -1,0 +1,12 @@
+services:
+  nodejs-dev:
+    container_name: e-shop-nestjs
+    restart: always
+    tty: true
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 7300:3000
+    volumes:
+      - ../app:/var/applications/app
