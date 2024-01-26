@@ -208,9 +208,9 @@
 
 #### API: Endpoints
 
-##### User Sign Up
+##### Create an user
 
-* **Description**: Register a new user
+* **Description**: Create a new user
 * **Request**:
   * Path: `/api/v1/user`
   * Method: `POST`
@@ -225,6 +225,13 @@
     POST /api/v1/user
     ```
 
+    ```json
+    {
+      "email": "email@example.com",
+      "password": "secret1234"
+    }
+    ```
+
 * **Response**:
   * Body: **None**
   * Example:
@@ -233,9 +240,9 @@
     // Empty body
     ```
 
-##### User Log in
+##### Log in an user
 
-* **Description**: Log in a new user
+* **Description**: Log in an user
 * **Request**:
   * Path: `/api/v1/user/login`
   * Method: `POST`
@@ -248,6 +255,45 @@
 
     ```HTTP
     POST /api/v1/user/login
+    ```
+
+    ```json
+    {
+      "email": "email@example.com",
+      "password": "secret1234"
+    }
+    ```
+
+* **Response**:
+  * Body: **None**
+  * Example:
+
+    ```json
+    // Empty body
+    ```
+
+##### Delete an user
+
+* **Description**: Delete an user
+* **Request**:
+  * Path: `/api/v1/user`
+  * Method: `DELETE`
+  * Parameter:
+    * [`email`](#user):
+      * required: `True`
+    * [`password`](#user):
+      * required: `True`
+  * Example:
+
+    ```HTTP
+    POST /api/v1/user/login
+    ```
+
+    ```json
+    {
+      "email": "email@example.com",
+      "password": "secret1234"
+    }
     ```
 
 * **Response**:
