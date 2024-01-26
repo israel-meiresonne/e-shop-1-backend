@@ -151,9 +151,8 @@
       * Description: Quantity of the product
       * type: `int`
       * required: `False`
-    * `price`:
-      * Description: Quantity of the product
-      * type: `float`
+    * [`price`](#price):
+      * Description: Product's price
       * required: `True`
 
 ##### `products`
@@ -171,6 +170,17 @@
     * If not given then the default page position if `0`
     * If the page position is outside the number of page available then the last page is returned
   * type: `int`
+
+##### `price`
+
+* `price`:
+  * Description: A price
+  * type: `object`
+  * Properties:
+    * `value`: Price's value
+      * type: `float`
+    * `symbol`: Price's currency symbol
+      * type: `string`
 
 ##### `sort`
 
@@ -291,7 +301,11 @@
           "pictures": [
             "/api/v1/picture/1",
             "/api/v1/picture/2"
-          ]
+          ],
+          "price": {
+            "value": 14.99,
+            "symbol": "$"
+          }
         },
         {
           "id": "efgh456",
@@ -299,7 +313,11 @@
           "pictures": [
             "/api/v1/picture/3",
             "/api/v1/picture/4"
-          ]
+          ],
+          "price": {
+            "value": 7.99,
+            "symbol": "$"
+          }
         }
       ],
       "pagination": [
@@ -329,7 +347,7 @@
 
 * **Response**:
   * Body:
-    * [`products`](#products)
+    * [`product`](#product)
   * Example:
 
     ```json
@@ -339,7 +357,11 @@
       "pictures": [
         "/api/v1/picture/1",
         "/api/v1/picture/2"
-      ]
+      ],
+      "price": {
+        "value": 14.99,
+        "symbol": "$"
+      }
     }
     ```
 
@@ -370,6 +392,10 @@
           "/api/v1/picture/5",
           "/api/v1/picture/6"
         ],
+        "price": {
+          "value": 14.99,
+          "symbol": "$"
+        },
         "quantity": 3
       },
       {
@@ -379,6 +405,10 @@
           "/api/v1/picture/1",
           "/api/v1/picture/2"
         ],
+        "price": {
+          "value": 18.07,
+          "symbol": "$"
+        },
         "quantity": 2
       },
       {
@@ -388,6 +418,10 @@
           "/api/v1/picture/3",
           "/api/v1/picture/4"
         ],
+        "price": {
+          "value": 2.59,
+          "symbol": "$"
+        },
         "quantity": 1
       }
     ]
