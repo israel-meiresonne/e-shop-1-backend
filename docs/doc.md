@@ -335,14 +335,14 @@
 
 * **Description**: To request one product
 * **Request**:
-  * Path: `/api/v1/product/:product_id`
+  * Path: `/api/v1/products/:product_id`
     * `:product_id`: The identifier of a product
   * Method: `GET`
   * Parameter: **None**
   * Example:
 
     ```HTTP
-    GET /api/v1/product/abcd123
+    GET /api/v1/products/abcd123
     ```
 
 * **Response**:
