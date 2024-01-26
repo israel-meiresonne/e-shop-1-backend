@@ -1,3 +1,3 @@
 import { UserAbstractDto } from './user.abstract.dto';
 
-export class CreateUserDto extends UserAbstractDto {}
+export class LoginUserDto extends UserAbstractDto {}
