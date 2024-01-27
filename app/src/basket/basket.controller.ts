@@ -1,34 +1,28 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Delete } from '@nestjs/common';
 import { BasketService } from './basket.service';
-import { CreateBasketDto } from './dto/create-basket.dto';
-import { UpdateBasketDto } from './dto/update-basket.dto';
+import { AddProductBasketDto, UpdateProductBasketDto } from './dto';
 
 @Controller('basket')
 export class BasketController {
   constructor(private readonly basketService: BasketService) {}
 
   @Post()
-  create(@Body() createBasketDto: CreateBasketDto) {
-    return this.basketService.create(createBasketDto);
+  addProducts(@Body() addProductBasketDto: AddProductBasketDto[]) {
+    return this.basketService.addProducts(addProductBasketDto);
   }
 
   @Get()
-  findAll() {
-    return this.basketService.findAll();
+  getBasket() {
+    return this.basketService.findBasket();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.basketService.findOne(+id);
+  @Patch()
+  updateProducts(@Body() updateProductBasketDto: UpdateProductBasketDto[]) {
+    return this.basketService.updateProducts(updateProductBasketDto);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBasketDto: UpdateBasketDto) {
-    return this.basketService.update(+id, updateBasketDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.basketService.remove(+id);
+  @Delete()
+  removeProducts(@Body() ids: string[]) {
+    return this.basketService.removeProducts(ids);
   }
 }

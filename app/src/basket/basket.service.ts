@@ -1,26 +1,21 @@
 import { Injectable } from '@nestjs/common';
-import { CreateBasketDto } from './dto/create-basket.dto';
-import { UpdateBasketDto } from './dto/update-basket.dto';
+import { AddProductBasketDto, UpdateProductBasketDto } from './dto';
 
 @Injectable()
 export class BasketService {
-  create(createBasketDto: CreateBasketDto) {
-    return 'This action adds a new basket';
+  addProducts(addProductBasketDto: AddProductBasketDto[]) {
+    return `This action adds a new product to the basket: ${JSON.stringify(addProductBasketDto)}`;
   }
 
-  findAll() {
-    return `This action returns all basket`;
+  findBasket() {
+    return `This action returns the basket`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} basket`;
+  updateProducts(updateProductBasketDto: UpdateProductBasketDto[]) {
+    return `This action update products in basket: ${JSON.stringify(updateProductBasketDto)}`;
   }
 
-  update(id: number, updateBasketDto: UpdateBasketDto) {
-    return `This action updates a #${id} basket`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} basket`;
+  removeProducts(ids: string[]) {
+    return `This action removes products from basket: #${JSON.stringify(ids)}`;
   }
 }
