@@ -523,7 +523,7 @@
 * **Description**: To update the products in the basket
 * **Request**:
   * Path: `/api/v1/basket`
-  * Method: `PUT`
+  * Method: `PATCH`
   * Body:
     * `id`:
       * Description: A [`product`](#product)'s identifier
@@ -537,7 +537,7 @@
   * Example:
 
     ```HTTP
-    PUT /api/v1/basket
+    PATCH /api/v1/basket
     ```
 
     ```json
