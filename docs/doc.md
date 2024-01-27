@@ -108,7 +108,7 @@
       * Description: Card's lastname
       * type: `string`
       * required: `True`
-    * `number`:
+    * `digit`:
       * Description: Card's number
       * type: `int`
       * required: `True`
@@ -615,7 +615,7 @@
       "card": {
         "firstname": "john",
         "lastname": "doe",
-        "number": "0123456789101112"
+        "digit": "0123456789101112"
       }
     }
     ```
