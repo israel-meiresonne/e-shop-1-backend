@@ -110,7 +110,9 @@
       * required: `True`
     * `digit`:
       * Description: Card's number
-      * type: `int`
+        * Constrains:
+          * Can be managed as a string because do not need the numeric value
+      * type: `string`
       * required: `True`
 
 ##### `criteria`
