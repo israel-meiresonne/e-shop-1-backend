@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { FilterProductDto } from './dto';
+import { FilterProductDto } from '../../dto';
 
 @Injectable()
 export class ProductsService {
