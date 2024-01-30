@@ -1,5 +1,5 @@
-import { Product } from '../../../products/model/product';
+import { BasketProductResponse } from '../basket-product';
 
-export interface Basket {
-  products: Product[];
+export interface BasketResponse {
+  products: BasketProductResponse[];
 }
