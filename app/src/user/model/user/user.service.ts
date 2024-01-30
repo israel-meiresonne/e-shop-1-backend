@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto, DeleteUserDto, LoginUserDto } from '../../dto';
+import { UserEntity } from './user.entity';
+import { UserResponse } from './user.interface';
 
 @Injectable()
 export class UserService {
@@ -13,5 +15,13 @@ export class UserService {
 
   login(loginUserDto: LoginUserDto) {
     return `This action log in an user: ${JSON.stringify(loginUserDto)}`;
+  }
+
+  private toResponse(userEntity: UserEntity): UserResponse {
+    return {
+      id: userEntity.id,
+      email: userEntity.email,
+      token: userEntity.token,
+    };
   }
 }
