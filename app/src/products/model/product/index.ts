@@ -1,2 +1,3 @@
 export * from './product.interface';
-export * from './product.class';
+export * from './product.service';
+export * from './product.entity';
