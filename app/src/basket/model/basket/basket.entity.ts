@@ -1,5 +1,5 @@
-import { BasketProduct } from '../basket-product';
+import { BasketProductEntity } from '../basket-product';
 
 export class BasketEntity {
-  products: BasketProduct[];
+  products: BasketProductEntity[];
 }

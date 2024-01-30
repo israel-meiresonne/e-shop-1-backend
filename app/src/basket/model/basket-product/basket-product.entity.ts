@@ -1,5 +1,5 @@
 import { ProductBase } from '../../../products/model/product';
 
-export class BasketProduct extends ProductBase {
+export class BasketProductEntity extends ProductBase {
   quantity: number;
 }

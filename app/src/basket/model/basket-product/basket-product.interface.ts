@@ -1,4 +1,6 @@
 import { ProductEntity } from 'src/products/model/product';
-import { BasketProduct } from '../basket-product';
+import { BasketProductEntity } from '../basket-product';
 
-export interface BasketProductResponse extends ProductEntity, BasketProduct {}
+export interface BasketProductResponse
+  extends ProductEntity,
+    BasketProductEntity {}
