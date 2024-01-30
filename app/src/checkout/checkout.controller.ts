@@ -1,10 +1,10 @@
 import { Controller, Post, Body } from '@nestjs/common';
-import { CheckoutService } from './checkout.service';
+import { CardService } from './model/card';
 import { CreateCheckoutDto } from './dto';
 
 @Controller('checkout')
 export class CheckoutController {
-  constructor(private readonly checkoutService: CheckoutService) {}
+  constructor(private readonly checkoutService: CardService) {}
 
   @Post()
   create(@Body() createCheckoutDto: CreateCheckoutDto) {
