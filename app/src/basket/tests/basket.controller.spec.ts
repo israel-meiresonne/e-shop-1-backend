@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { BasketController } from '../basket.controller';
-import { BasketService } from '../basket.service';
+import { BasketService } from '../model/basket';
 
 describe('BasketController', () => {
   let controller: BasketController;

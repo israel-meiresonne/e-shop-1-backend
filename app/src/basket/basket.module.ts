@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { BasketService } from './basket.service';
+import { BasketService } from './model/basket';
 import { BasketController } from './basket.controller';
 
 @Module({

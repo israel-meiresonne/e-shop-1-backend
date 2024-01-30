@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { AddProductBasketDto, UpdateProductBasketDto } from './dto';
+import { AddProductBasketDto, UpdateProductBasketDto } from '../../dto';
 
 @Injectable()
 export class BasketService {

@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Patch, Delete } from '@nestjs/common';
-import { BasketService } from './basket.service';
+import { BasketService } from './model/basket';
 import { AddProductBasketDto, UpdateProductBasketDto } from './dto';
 
 @Controller('basket')
