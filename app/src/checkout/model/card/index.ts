@@ -1,3 +1,3 @@
 export * from './card.interface';
-export * from './card.class';
+export * from './card.entity';
 export * from './card.service';

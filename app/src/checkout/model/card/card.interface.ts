@@ -1,6 +1,3 @@
-export interface Card {
+export interface CardResponse {
   id: string;
-  firstname: string;
-  lastname: string;
-  digit: string;
 }
