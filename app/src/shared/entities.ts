@@ -1,5 +1,11 @@
+import { BasketProductEntity } from '../basket/model/basket-product';
 import { PictureEntity } from '../products/model/picture';
 import { ProductEntity } from '../products/model/product';
 import { UserEntity } from '../user/model/user';
 
-export const Entities = [UserEntity, ProductEntity, PictureEntity];
+export const Entities = [
+  UserEntity,
+  ProductEntity,
+  PictureEntity,
+  BasketProductEntity,
+];
