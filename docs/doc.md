@@ -69,6 +69,24 @@
 
 [<img src="resources/erd-database.drawio.svg">](resources/erd-database.drawio.svg)
 
+#### Foreign key actions
+
+* **Card**
+  * **user_id**:
+    * On Delete: `CASCADE`
+    * On Update: `CASCADE`
+* **Basket**
+  * **user_id**:
+    * On Delete: `CASCADE`
+    * On Update: `CASCADE`
+  * **product_id**:
+    * On Delete: `CASCADE`
+    * On Update: `CASCADE`
+* **ProductPicture**
+  * **product_id**:
+    * On Delete: `CASCADE`
+    * On Update: `CASCADE`
+
 ### API structure
 
 #### API: Overall info
