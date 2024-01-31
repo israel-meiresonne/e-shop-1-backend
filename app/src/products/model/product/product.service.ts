@@ -13,12 +13,12 @@ export class ProductsService {
     return `This action returns a #${id} product`;
   }
 
-  toResponse(productEntity: ProductEntity): ProductResponse {
-    return {
-      id: productEntity.id,
-      name: productEntity.name,
-      pictures: productEntity.pictures,
-      price: productEntity.price,
-    };
-  }
+  // toResponse(productEntity: ProductEntity): ProductResponse {
+  //   return {
+  //     id: productEntity.id,
+  //     name: productEntity.name,
+  //     pictures: productEntity.pictures,
+  //     price: productEntity.price,
+  //   };
+  // }
 }
