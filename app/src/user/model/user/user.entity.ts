@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { BasketProductEntity } from '../../../basket/model/basket-product';
+import { CardEntity } from '../../../checkout/model/card';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity('User')
 export class UserEntity {
@@ -13,4 +15,14 @@ export class UserEntity {
 
   @Column('varchar', { length: 128 })
   hash: string;
+
+  @OneToMany(() => BasketProductEntity, (basketProduct) => basketProduct.user, {
+    cascade: ['insert', 'update', 'remove'],
+  })
+  basket: BasketProductEntity[];
+
+  @OneToMany(() => CardEntity, (card) => card.user, {
+    cascade: ['insert', 'update', 'remove'],
+  })
+  card: CardEntity[];
 }

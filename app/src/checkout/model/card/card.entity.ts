@@ -1,9 +1,20 @@
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
+import { UserEntity } from '../../../user/model/user';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('Card')
 export class CardEntity {
-  @PrimaryColumn({ type: 'varchar', length: 30 })
-  userId: string;
+  @PrimaryColumn({ name: 'userId', type: 'varchar', length: 36 })
+  @ManyToOne(() => UserEntity, (user) => user.card, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  user: UserEntity;
 
   @PrimaryGeneratedColumn('uuid')
   id: string;
