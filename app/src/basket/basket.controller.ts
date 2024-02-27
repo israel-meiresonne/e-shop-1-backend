@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Delete,
+  ParseArrayPipe,
+} from '@nestjs/common';
 import { BasketService } from './model/basket';
 import { AddProductBasketDto, UpdateProductBasketDto } from './dto';
 
@@ -22,7 +30,7 @@ export class BasketController {
   }
 
   @Delete()
-  removeProducts(@Body() ids: string[]) {
+  removeProducts(@Body(new ParseArrayPipe({ items: String })) ids: string[]) {
     return this.basketService.removeProducts(ids);
   }
 }
