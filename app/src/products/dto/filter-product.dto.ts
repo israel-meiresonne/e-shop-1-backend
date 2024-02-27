@@ -1,13 +1,14 @@
+import { Type } from 'class-transformer';
 import { IsEnum, IsInt } from 'class-validator';
 
 enum SortFilterProduct {
-  ASC = 'ASC',
-  DESC = 'DESC',
+  ASC = 'asc',
+  DESC = 'desc',
 }
 
 enum CriteriaFilterProduct {
-  PRICE = 'PRICE',
-  NAME = 'NAME',
+  PRICE = 'price',
+  NAME = 'name',
 }
 
 export class FilterProductDto {
@@ -18,8 +19,10 @@ export class FilterProductDto {
   readonly criteria?: CriteriaFilterProduct;
 
   @IsInt()
+  @Type(() => Number)
   readonly limit?: number;
 
   @IsInt()
+  @Type(() => Number)
   readonly page?: number;
 }
