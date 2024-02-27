@@ -1,12 +1,9 @@
-import { IsInt, IsString } from 'class-validator';
+import { IsInstance } from 'class-validator';
+import { CardDto } from './card.dto';
+import { Type } from 'class-transformer';
 
 export class CreateCheckoutDto {
-  @IsString()
-  readonly firstname: string;
-
-  @IsString()
-  readonly lastname: string;
-
-  @IsInt()
-  readonly digit: string;
+  @IsInstance(CardDto)
+  @Type(() => CardDto)
+  readonly card: CardDto;
 }
