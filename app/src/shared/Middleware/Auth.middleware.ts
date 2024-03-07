@@ -17,7 +17,7 @@ export class AuthMiddleware implements NestMiddleware {
   async use(req: Request, res: Response, next: NextFunction) {
     const token = this.extractAuthorization(req);
     const decoded = await this.decodeToken(token);
-    const user = this.userService.findById(decoded.id);
+    const user = this.userService.findById(decoded.id, HttpStatus.FORBIDDEN);
     req.body.user = user;
     next();
   }
