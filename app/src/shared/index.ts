@@ -3,3 +3,4 @@
 // export { Entities } from './entities';
 */
 export * from './jwt.key';
+export * from './Middleware/Auth.middleware';
