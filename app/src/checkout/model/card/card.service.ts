@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCheckoutDto } from '../../dto';
-import { CardResponse, CardEntity } from '.';
+import { CardEntity } from './card.entity';
+import { CardResponse } from '.';
 
 @Injectable()
 export class CardService {

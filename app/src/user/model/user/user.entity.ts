@@ -1,5 +1,5 @@
-import { BasketProductEntity } from '../../../basket/model/basket-product';
-import { CardEntity } from '../../../checkout/model/card';
+import { BasketProductEntity } from '../../../basket/model/basket-product/basket-product.entity';
+import { CardEntity } from '../../../checkout/model/card/card.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity('User')

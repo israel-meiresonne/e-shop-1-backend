@@ -1,8 +1,8 @@
-import { BasketProductEntity } from '../basket/model/basket-product';
-import { CardEntity } from '../checkout/model/card';
-import { PictureEntity } from '../products/model/picture';
-import { ProductEntity } from '../products/model/product';
-import { UserEntity } from '../user/model/user';
+import { BasketProductEntity } from '../basket/model/basket-product/basket-product.entity';
+import { CardEntity } from '../checkout/model/card/card.entity';
+import { PictureEntity } from '../products/model/picture/picture.entity';
+import { ProductEntity } from '../products/model/product/product.entity';
+import { UserEntity } from '../user/model/user/user.entity';
 
 export const Entities = [
   BasketProductEntity,

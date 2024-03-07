@@ -1,5 +1,5 @@
-import { ProductEntity } from '../../../products/model/product';
-import { UserEntity } from '../../../user/model/user';
+import { ProductEntity } from '../../../products/model/product/product.entity';
+import { UserEntity } from '../../../user/model/user/user.entity';
 import { Column, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
 
 @Entity('Basket')
