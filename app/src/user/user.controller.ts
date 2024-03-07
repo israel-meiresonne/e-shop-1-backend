@@ -1,23 +1,31 @@
 import { Controller, Post, Delete, Body } from '@nestjs/common';
-import { UserService } from './model/user';
+import { UserResponse, UserService } from './model/user';
 import { CreateUserDto, DeleteUserDto, LoginUserDto } from './dto';
+import { MyJWT } from '../shared';
 
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
+  async create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
 
   @Delete()
-  delete(@Body() deleteUserDto: DeleteUserDto) {
-    return this.userService.delete(deleteUserDto);
+  async delete(@Body() deleteUserDto: DeleteUserDto) {
+    await this.userService.delete(deleteUserDto);
+    return { isSuccess: true };
   }
 
   @Post('login')
-  login(@Body() loginUserDto: LoginUserDto) {
-    return this.userService.login(loginUserDto);
+  async login(@Body() loginUserDto: LoginUserDto): Promise<UserResponse> {
+    const user = await this.userService.login(loginUserDto);
+    const keys = await MyJWT.getKeys();
+    const jwt = await (await MyJWT.sign(user))
+      .setExpirationTime('2h')
+      .sign(keys.privateKey);
+    user.token = jwt;
+    return user;
   }
 }

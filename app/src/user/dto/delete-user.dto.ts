@@ -1,3 +1,4 @@
+import { PickType } from '@nestjs/mapped-types';
 import { UserDto } from './user.dto';
 
-export class DeleteUserDto extends UserDto {}
+export class DeleteUserDto extends PickType(UserDto, ['email'] as const) {}

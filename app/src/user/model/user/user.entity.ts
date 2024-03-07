@@ -10,9 +10,6 @@ export class UserEntity {
   @Column('varchar', { unique: true, length: 320 })
   email: string;
 
-  @Column('varchar', { unique: true, length: 30 })
-  token: string;
-
   @Column('varchar', { length: 128 })
   hash: string;
 
