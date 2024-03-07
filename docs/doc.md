@@ -253,11 +253,20 @@
     ```
 
 * **Response**:
-  * Body: **None**
+  * Body:
+    * `id`:
+      * Description: user's id
+      * type: `string`
+    * `email`:
+      * Description: user's email
+      * type: `string`
   * Example:
 
     ```json
-    // Empty body
+    {
+      "id": "7d6aa302-8f2c-4c10-8a37-a821181d308e",
+      "email": "email@example.com"
+    }
     ```
 
 ##### Log in an user
@@ -285,11 +294,24 @@
     ```
 
 * **Response**:
-  * Body: **None**
+  * Body:
+    * `id`:
+      * Description: user's id
+      * type: `string`
+    * `email`:
+      * Description: user's email.
+      * type: `string`
+    * `token`:
+      * Description: user's JSON Web Token.
+      * type: `string`
   * Example:
 
     ```json
-    // Empty body
+    {
+      "id": "8f86825e-3324-4f4e-b6c1-ec59b586eba3",
+      "email": "email@example.com",
+      "token": "jwt-token"
+    }
     ```
 
 ##### Delete an user
@@ -317,11 +339,16 @@
     ```
 
 * **Response**:
-  * Body: **None**
+  * Body:
+    * `isSuccess`:
+      * Description: True if deletion succeed else will raise an error.
+      * type: `boolean`
   * Example:
 
     ```json
-    // Empty body
+    {
+      "isSuccess": true
+    }
     ```
 
 ##### Get Multiple Products
