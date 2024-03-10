@@ -1,10 +1,57 @@
-# E-Shop-1
+# E-shop
+<!-- ❌ Don't Delete This Comment ❌
+Project Name:
+  eshop-nestjs
+Project short description:
+  Backend RESTful API of an online store application.
+Project Topics (tags):
+  nestjs typescript typeorm api mysql docker
+-->
 
-## Plan
+This project is a backend RESTful API of an online store application.
 
-### Description
+## Table content
 
-* This web API implement an e-shop with `Nest.js`.
+* Table content
+* [Description](#description)
+  * [Features](#features)
+  * [Versions](#versions)
+  * [Technology Stack](#technology-stack)
+* [UML diagrams](#uml-diagrams)
+  * [Use case diagrams](#use-case-diagrams)
+  * [Activity diagrams](#activity-diagrams)
+  * [Classes diagrams](#classes-diagrams)
+* [Database](#database)
+* [API: Overall info](#api-overall-info)
+* [API: Reference](#api-reference)
+  * [`basket`](#basket)
+  * [`card`](#card)
+  * [`criteria`](#criteria)
+  * [`limit`](#limit)
+  * [`picture`](#picture)
+  * [`product`](#product)
+  * [`products`](#products)
+  * [`page`](#page)
+  * [`price`](#price)
+  * [`sort`](#sort)
+  * [`user`](#user)
+* [API: Endpoints](#api-endpoints)
+  * [Create an user](#create-an-user)
+  * [Log in an user](#log-in-an-user)
+  * [Delete an user](#delete-an-user)
+  * [Get Multiple Products](#get-multiple-products)
+  * [Get One Product](#get-one-product)
+  * [Get Basket](#get-basket)
+  * [Add Products To The Basket](#add-products-to-the-basket)
+  * [Change Products In The Basket](#change-products-in-the-basket)
+  * [Remove Products From The Basket](#remove-products-from-the-basket)
+  * [Checkout The Basket](#checkout-the-basket)
+* [API: Error Handling](#api-error-handling)
+  * [Error: Structure](#error-structure)
+  * [Error: Category](#error-category)
+  * [Error: Documentation](#error-documentation)
+
+## Description
 
 ### Features
 
@@ -15,92 +62,76 @@
 | F3  | Add and remove a product from the basket |
 | F4  | Show the basket                          |
 | F5  | Checkout products in the basket          |
+| F6  | Authentication user                      |
 
 ### Versions
 
 | Version | Feature to implement |
 | :-----: | :------------------: |
-|  v1.0   |        F1->F5        |
-
-### Timeline
+|  v1.0   |       F1 to F6       |
 
 ### Technology Stack
 
-| Back-end              |
-| --------------------- |
-| Nest.js               |
-| TypeScript            |
-| TypeORM               |
-| PostgreSQL            |
-| Docker/Docker-Compose |
+| Back-end   |
+| ---------- |
+| Nest.js    |
+| TypeScript |
+| TypeORM    |
+| MySQL      |
+| Docker     |
 
-## Analyze and Design
+<!-- ## Client-Server Architecture
 
-### Software Architecture
+[<img src="rsc/network-components.drawio.svg" width="500">](rsc/network-components.drawio.svg) -->
 
-#### Network components
+## UML diagrams
 
-[<img src="resources/network-components.drawio.svg">](resources/network-components.drawio.svg)
+### Use case diagrams
 
-#### UML diagrams
+[<img src="rsc/use-case.drawio.svg" width="500">](rsc/use-case.drawio.svg)
 
-##### Use case diagrams
-
-[<img src="resources/use-case.drawio.svg">](resources/use-case.drawio.svg)
-
-##### Activity diagrams
+### Activity diagrams
 
 * Feature F1:
-[<img src="resources/activity-f1.drawio.svg">](resources/activity-f1.drawio.svg)
+[<img src="rsc/activity-f1.drawio.svg" width="500">](rsc/activity-f1.drawio.svg)
 * Feature F2:
-[<img src="resources/activity-f2.drawio.svg">](resources/activity-f2.drawio.svg)
+[<img src="rsc/activity-f2.drawio.svg" width="500">](rsc/activity-f2.drawio.svg)
 * Feature F3-Add:
-[<img src="resources/activity-f3-add.drawio.svg">](resources/activity-f3-add.drawio.svg)
+[<img src="rsc/activity-f3-add.drawio.svg" width="500">](rsc/activity-f3-add.drawio.svg)
 * Feature F3-Remove:
-[<img src="resources/activity-f3-remove.drawio.svg">](resources/activity-f3-remove.drawio.svg)
+[<img src="rsc/activity-f3-remove.drawio.svg" width="500">](rsc/activity-f3-remove.drawio.svg)
 * Feature F5:
-[<img src="resources/activity-f5.drawio.svg">](resources/activity-f5.drawio.svg)
+[<img src="rsc/activity-f5.drawio.svg" width="500">](rsc/activity-f5.drawio.svg)
 
-##### Classes diagrams
+### Classes diagrams
 
-[<img src="resources/class-diagram.drawio.svg">](resources/class-diagram.drawio.svg)
+[<img src="rsc/class-diagram.drawio.svg" width="500">](rsc/class-diagram.drawio.svg)
 
-### Database
+## Database
 
-[<img src="resources/erd-database.drawio.svg">](resources/erd-database.drawio.svg)
+* **Database Foreign Key Actions:**
+  | Table          | Foreign Key | On Delete | On Update |
+  | -------------- | ----------- | --------- | --------- |
+  | Card           | user_id     | `CASCADE` | `CASCADE` |
+  | Basket         | user_id     | `CASCADE` | `CASCADE` |
+  | Basket         | product_id  | `CASCADE` | `CASCADE` |
+  | ProductPicture | product_id  | `CASCADE` | `CASCADE` |
 
-#### Foreign key actions
+* **ER Diagram**:
+  * *I used `one-to-one` links for clarity*
 
-* **Card**
-  * **user_id**:
-    * On Delete: `CASCADE`
-    * On Update: `CASCADE`
-* **Basket**
-  * **user_id**:
-    * On Delete: `CASCADE`
-    * On Update: `CASCADE`
-  * **product_id**:
-    * On Delete: `CASCADE`
-    * On Update: `CASCADE`
-* **ProductPicture**
-  * **product_id**:
-    * On Delete: `CASCADE`
-    * On Update: `CASCADE`
+  [<img src="rsc/erd-database.drawio.svg" width="500">](rsc/erd-database.drawio.svg)
 
-### API structure
+## API: Overall info
 
-#### API: Overall info
+* **Paradigm:** `REST API`
+* **Data structures and types:** `JSON`
+* **Authentication:** `JWT`
+* **Authorization:** Each user has access to their own data only
 
-* Paradigm: **REST API**
-* Data structures and types: `json`
-* Authentication:
-  * Token: users are authenticated with a unique token
-* Authorization:
-  * Each user has access to his own data only
+## API: Reference
 
-#### API: Reference
-
-##### `basket`
+### `basket`
 
 * `basket`:
   * Description: Basket where users put their [`product`](#product)
@@ -112,7 +143,7 @@
     * type: `float`
     * required: `True`
 
-##### `card`
+### `card`
 
 * `card`:
   * Description: Payment card details
@@ -133,26 +164,26 @@
       * type: `string`
       * required: `True`
 
-##### `criteria`
+### `criteria`
 
 * `criteria`:
   * Description: Value on which to base the sorting [`sort`](#sort)
   * type: `enum`
   * value: **See the usage**
 
-##### `limit`
+### `limit`
 
 * `limit`:
   * Description: The maximum number of requested resources returned
   * type: `int`
 
-##### `picture`
+### `picture`
 
 * `picture`:
   * Description: Link (URL or path) to access picture
   * type: `string`
 
-##### `product`
+### `product`
 
 * `product`:
   * Description: A product
@@ -175,13 +206,13 @@
       * Description: Product's price
       * required: `True`
 
-##### `products`
+### `products`
 
 * `products`:
   * Description: List of [`product`](#product)
   * type: `list`
 
-##### `page`
+### `page`
 
 * `page`:
   * Description: Indicate the position of the page to get in pagination
@@ -191,7 +222,7 @@
     * If the page position is outside the number of page available then the last page is returned
   * type: `int`
 
-##### `price`
+### `price`
 
 * `price`:
   * Description: A price
@@ -202,14 +233,14 @@
     * `symbol`: Price's currency symbol
       * type: `string`
 
-##### `sort`
+### `sort`
 
 * `sort`:
   * Description: To order the response
   * type: `enum`
   * value: `asc`|`desc`
 
-##### `user`
+### `user`
 
 * `user`:
   * Description: An user
@@ -226,9 +257,9 @@
       * Description: user's password
       * type: `string`
 
-#### API: Endpoints
+### API: Endpoints
 
-##### Create an user
+#### Create an user
 
 * **Description**: Create a new user
 * **Request**:
@@ -269,7 +300,7 @@
     }
     ```
 
-##### Log in an user
+#### Log in an user
 
 * **Description**: Log in an user
 * **Request**:
@@ -314,7 +345,7 @@
     }
     ```
 
-##### Delete an user
+#### Delete an user
 
 * **Description**: Delete an user
 * **Request**:
@@ -351,7 +382,7 @@
     }
     ```
 
-##### Get Multiple Products
+#### Get Multiple Products
 
 * **Description**: To request list of product
 * **Request**:
@@ -414,7 +445,6 @@
         }
       ],
       "pagination": [
-        // The current page is 3 so there's no link for it
         "/api/v1/products?sort=desc&criteria=price&limit=15&page=0",
         "/api/v1/products?sort=desc&criteria=price&limit=15&page=1",
         "/api/v1/products?sort=desc&criteria=price&limit=15&page=2",
@@ -424,7 +454,7 @@
     }
     ```
 
-##### Get One Product
+#### Get One Product
 
 * **Description**: To request one product
 * **Request**:
@@ -458,7 +488,7 @@
     }
     ```
 
-##### Get Basket
+#### Get Basket
 
 * **Description**: To get an user's basket
 * **Request**:
@@ -520,7 +550,7 @@
     ]
     ```
 
-##### Add Products To The Basket
+#### Add Products To The Basket
 
 * **Description**: To add products in the basket
 * **Request**:
@@ -565,7 +595,7 @@
     // Empty body
     ```
 
-##### Change Products In The Basket
+#### Change Products In The Basket
 
 * **Description**: To update the products in the basket
 * **Request**:
@@ -612,7 +642,7 @@
     // Empty body
     ```
 
-##### Remove Products From The Basket
+#### Remove Products From The Basket
 
 * **Description**: To remove products from the basket
 * **Request**:
@@ -643,7 +673,7 @@
     // Empty body
     ```
 
-##### Checkout The Basket
+#### Checkout The Basket
 
 * **Description**: To checkout the basket
 * **Request**:
@@ -675,9 +705,9 @@
     // Empty body
     ```
 
-#### API: Error Handling
+## API: Error Handling
 
-##### Error: Structure
+### Error: Structure
 
 * Follow [RFC7807](https://datatracker.ietf.org/doc/html/rfc7807) rules
 * Parameters (`RFC7807`):
@@ -704,7 +734,7 @@
     }
   ```
 
-##### Error: Category
+### Error: Category
 
 | Category            | HTTP Range | System Range | Description                                        |
 | ------------------- | ---------- | ------------ | -------------------------------------------------- |
@@ -712,12 +742,12 @@
 | Unavailable service | 500        | 1100         | Can't perform request due to a unavailable service |
 | Unknown service     | 500        | 1200         | An undocumented error                              |
 | Client error        | 400        | 2000         | Error from the client side                         |
-| Unauthorized access | 400        | 2100         | Unauthorized access to resource             |
+| Unauthorized access | 400        | 2100         | Unauthorized access to resource                    |
 | Malformed request   | 400        | 2200         | Request don't respect data structure and/or type   |
 | Invalid request     | 400        | 2300         | Request's content is not valid                     |
 | Conflict state      | 400        | 2400         | The current state don't allow the operation        |
 
-##### Error: Documentation
+### Error: Documentation
 
 | System Error Code | HTTP Status Code | Machine-Readable | Human-Readable |
 | ----------------- | ---------------- | ---------------- | -------------- |
