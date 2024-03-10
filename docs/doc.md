@@ -5,7 +5,7 @@ Project Name:
 Project short description:
   Backend RESTful API of an online store application with Docker, Nest.js, TypeORM and MySQL
 Project Topics (tags):
-  nestjs typescript typeorm api mysql docker
+  mysql api docker typeorm typescipt nestjs-backend
 -->
 
 This project is a backend RESTful API of an online store application.
