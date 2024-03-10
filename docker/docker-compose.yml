@@ -1,4 +1,13 @@
 services:
+  nodejs-mysql:
+    image: mysql:8.0
+    container_name: nodejs-mysql
+    restart: always
+    tty: true
+    ports:
+      - 7306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
   nodejs-dev:
     container_name: e-shop-nestjs
     restart: always
