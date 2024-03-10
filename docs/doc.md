@@ -1,7 +1,7 @@
 # E-shop
 <!-- ❌ Don't Delete This Comment ❌
 Project Name:
-  eshop-nestjs
+  eshop-nestjs-typeorm
 Project short description:
   Backend RESTful API of an online store application with Docker, Nest.js, TypeORM and MySQL
 Project Topics (tags):
